@@ -2,105 +2,244 @@
 <head>
 	<title>Komendy Git</title>
 	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+	<script src="timer.js"></script>
 </head>
-<style>
-body{
-    line-height: 22px;
-		background-color: lightgrey;
-}
- #1CC{
-	text-align : center;
-	position : absolute;
-}
-ul.nice{
-	list-style-position : inside;
-	list-style-image: url("https://cdn2.iconfinder.com/data/icons/halloween-filled/48/Black-Cat-16.png");
-	font-size : 25px;
-	font-size : 1.3vw;
-}
- #1CF{
-	text-align : center;
-	position : absolute;
-}
-ul.tick{
-	list-style-position : inside;
-	list-style-image: url("https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_check-16.png");
-}
-</style>
-<body>
-<h1>Opracowanie komend git</h1>
+<body onload="odliczanie();">
+    <div id="wrapper">
+        <header>
+        <img src="https://blog.intelligentbee.com/wp-content/uploads/2015/03/6-30-12_Git1.jpg" alt="git - header"/>
+        </header>
+    </div>
+	<div id="zegar" style="	float: right;font-size: 40px;font-family:'Lato',sans-serif;text-align:left;">12:00:00 </div>
+<h1>Opracowanie komend</h1>
 <h2>Zadania dla grupy 1CE</h2>
 <ul>
 	<li>
 		<strong>git config --global user.email ""</strong> - <span>ustawia globalnie adres e-mail użytkownika używany do commitowania</span>
 	</li>
 	<li>
-		<strong>git commit -a -m ""</strong> - <span>automatycznie stage'uje wszystkie zmodyfikowane i usunięte pliki (za wyjątkiem nowych) i dodaje commit z komentarzem ""</span>
+		<strong>git commit -a -m "opis"</strong> - <span> Zatwierdza zmiany uwzględnione w poczekanlni do nowej wersji rewizji. Parametr -a (lub -all) powoduje, że pliki zmodyfikowane oraz usunięte będą automatycznie uwzględnione w tej rewizji. Parametr -m (lub -message) "opis" pozwala wprowadzić opis rewizji bezpośrednio z wiersza poleceń. Gdy opcja -m nie jest uwzględniona, git uruchomi domyślny edytor tekstu gdzie będziemy mogli ręcznie wprowadzić opis. </span>
 	</li>
 	<li>
-		<strong>git diff --staged</strong> - <span>pokazuje różnice pomiędzy ostatnim commitem a zestage'owanymi zmianami</span>
+		<strong>git diff --staged</strong> - <span>pokazuje różnice pomiędzy ostatnim commitem a zestage'owanymi zmianami. Wyświetla zawartość poczekalni , która trafi do repozytorium z najbliższym zatwierdzeniem.</span>
 	</li>
 	<li>
 		<strong>git checkout -b "branch"</strong> - <span>przełącza do gałęzi o nazwie "branch". Jeżeli nie istnieje gałąź o takiej nazwie, tworzy ją.</span>
 	</li>
 	<li>
 		<strong>git log --graph --all</strong> - <span>wyświetla graficzną (choć tekstową) reprezentację historii wszystkich commitów w repozytorium</span>
-		<br><figure><a href="http://i.imgur.com/8iLX0jS.png"><img src="http://i.imgur.com/8iLX0jS.png" title="git log w git bash (shell)" alt="Zachowanie komendy git log --graph -all w git bash" style='height: 25%; width: 25%; object-fit: cover'></a>
+		<br><figure><a target="_blank" href="http://i.imgur.com/8iLX0jS.png"><img src="http://i.imgur.com/8iLX0jS.png" title="git log w git bash (shell)" alt="Zachowanie komendy git log --graph -all w git bash" style='height: 25%; width: 25%; object-fit: cover'></a>
 		<figcaption>Działanie komendy w git bash (graficzna reprezentacja commitów)</figcaption> </figure>
+		<strong>Uwaga: Opcja --graph nie może być łączona z opcja --no-walk (która pokazuje tylko commity, ale bez ich poprzedników)</strong>
 	</li>
 	<li>
 		<strong>git branch -d "branch"</strong> - <span>usuwa gałąź o nazwie "branch"</span>
 	</li>
 	<li>
-		<strong>git remote add "remote_name" "git url"</strong> - <span>dodaje zdalne repozytorium pod nazwą "remote_name"</span>
+		<strong>git remote add "Grażyna" "git url"</strong> - <span>dodaje zdalne repozytorium pod nazwą "Grażyna"</span>
 	</li>
 	<li>
 		<strong>git fetch "remote" "branch"</strong> - <span>pobiera zmiany ze zdalnego repozytorium o nazwie "remote", z gałęzi "branch". W przeciwieństwie do
 		 pulla nie merguje lokalnego repozytorium z głównym.</span>
 	</li>
 </ul>
-<div id = "1CC">
+<div id="1CC">
 <h2>Zadanie dla grupy 1CC</h2>
-<ul class = "nice">
-<li> <em>git config --global user.name ""</em> - konfiguracja własnej nazwy użytkownika. Opcja '--global' sprawia że konfiguracja zostanie dokonana jednorazowo </li>
-<li> <em>git add .</em> - komenda dokonująca update w Index używajac aktualnego kontentu znalezionego w 'working tree', żeby przygotować 'content staged' na nastepny commit. Stages new and modified, without deleted.</li>
-<li> <em>git reset HEAD</em> - resetuje wszystkie spisy 'Index' w HEAD, pozostawiając 'working tree' bez zmian i raportuje to, co zostało zmienione. Dodatkowo można podać mode, domyślny to --mixed </li>
-<li> <em>git checkout "branch"</em> - przełącza na gałąź <em>branch</em> - po jej wykonaniu HEAD wskazuje na <em>branch</em>  </li>
-<li> <em>gitk --all</em> - otwiera program ze środowiskiem graficznym, który umożliwia podejrzenie wszystkich wprowadzanych zmian na repozytorium
-<br><figure><a href="http://oi65.tinypic.com/2z6giah.jpg"><img src="http://oi65.tinypic.com/2z6giah.jpg" title="przyklad dzialania gitk" style='height: 25%; width: 25%; object-fit: cover'></a> </li>
-<li> <em>git branch --merged</em> - wypisuje wszystkie gałęzie połączone z HEAD (głowica gałęzi na której się znajdujemy)</li>
-<li> <em>git branch "branch" "commit hash"</em> - tworzy nową gałąź 'branch' a jako jej head (głowicę) ustawia 'commit hash'</li>
-<li> <em>git pull "remote" "branch"</em> - Pobiera gałąź 'branch' ze zdalnego repozytorium 'remote' i zapisuje ją w lokalnej gałęzi 'branch'</li>
+<ul class="nice">
+<li> <em><strong>git config --global user.name ""</strong></em> - konfiguracja własnej nazwy użytkownika. Opcja '--global' sprawia ,że konfiguracja zostanie dokonana jednorazowo.</li>
+<li> <em><strong>git add .</strong></em> - komenda dokonująca update w Index używając aktualnego kontentu znalezionego w 'working tree', żeby przygotować 'content staged' na nastepny commit. Etapy są modyfikowane bez kasowania.</li>
+<li> <em><strong>git reset HEAD</strong></em> - resetuje wszystkie spisy 'Index' w HEAD, pozostawiając 'working tree' bez zmian i raportuje to, co zostało zmienione. Dodatkowo można podać spos&oacute;b, domyślny to '--mixed'.</li>
+<li> <em><strong>git checkout "branch"</strong></em> - Sprawdza gałąź, kt&oacute;ra wcześniej powinna zostać utworzona przez komendę git branch. Następnie przełącza na gałąź <em>branch</em> ,a po jej wykonaniu HEAD wskazuje na <em>branch</em>.</li>
+<li> <em><strong>gitk --all</strong></em> - otwiera program ze środowiskiem graficznym, kt&oacute;ry umożliwia wgląd we wszystkie wprowadzone jak dotąd zmiany na repozytorium. <br />
+<figure><a href="http://oi65.tinypic.com/2z6giah.jpg" target="_blank"><img style="height: 25%; width: 25%; object-fit: cover;" title="przyklad dzialania gitk" src="http://oi65.tinypic.com/2z6giah.jpg" alt="" /></a></figure>
+</li>
+<li> <em><strong>git branch --merged</strong></em> -filtruje listę gałęzi i wyświetla wszystkie te,kt&oacute;re zostały już połączone z HEAD (głowica gałęzi na kt&oacute;rej się znajdujemy).</li>
+<li> <em><strong>git branch "branch" "commit hash"</strong></em> - tworzy nową gałąź 'branch' ,a jako jej head (głowicę) ustawia 'commit hash'.</li>
+<li> <em><strong>git pull "remote" "branch"</strong></em> - Pobiera gałąź 'branch' ze zdalnego repozytorium 'remote' ,a następnie zapisuje ją w lokalnej gałęzi 'branch'.</li>
 </ul>
 </div>
 <div id = "1CF">
 <h2>Zadania dla grupy 1CF</h2>
+<br><b><u><font size="5"><font color="red">Kliknij na komendę aby wyświetlić jej opis</font></font><u></b>
 <ul class = "tick">
+    <li>
+        <div class="popup" onclick="myFunction()"><strong>git config --global color.ui true</strong>
+            <span class="popuptext" id="myPopup">Komunikaty generowane przez komendy git'a w terminalu będą miały różne kolory. Taką samą rolę jak komenda "true", pełni komenda "auto", która jest domyślna od wersji GIT 1.8.4.</span>
+        </div>
+    </li>
+    <li>
+         <div class="popup" onclick="myFunction1()"><strong>git commit "NazwaPliku"</strong>
+            <span class="popuptext" id="myPopup1">Tworzy commit składający się z plików podanych jako argument "NazwaPliku". Pozostałe pliki w stanie staged nie są dodane do tego commita.</span>
+                </div>
+    </li>
+    <li>
+         <div class="popup" onclick="myFunction2()"><strong>git branch "name"</strong>
+            <span class="popuptext" id="myPopup2">Tworzy nową gałąź o nazwie "name" w repozytorium w , którym się aktualnie znajdujemy.</span>
+        </div>
+    </li>
+    <li>
+        <div class="popup" onclick="myFunction3()"><strong>git branch -v</strong>
+            <span class="popuptext" id="myPopup3">Wypisuje nazwę aktywnego brancha wraz z szczegółami ostatniego commita (początek skrótu sha1 oraz temat).</span>
+        </div>
+    </li>
+    <li>
+        <div class="popup" onclick="myFunction4()"><strong>git push "remote" "branch"</strong>
+            <span class="popuptext" id="myPopup4">Wysyła zmiany z ostatniego commita w lokalnej gałęzi "branch" do zdalnego repozytorium "remote".</span>
+        </div>
+    </li>
+    <li>
+        <div class="popup" onclick="myFunction5()"><strong>git log "branch1" --not "branch2"</strong>
+            <span class="popuptext" id="myPopup5">Wyświetli historię commitów "branch1" z pominięciem commitów będących częścią "branch2".</span>
+        </div>
+    </li>
+    <li>
+       <div class="popup" onclick="myFunction6()"><strong>git blame -C "filename"</strong>
+            <span class="popuptext" id="myPopup6">Wyszukuje fragmenty kodu przekopiowane z innych plików będących częścią tego samego commita.</span>
+        </div>
+        <br><figure><a target="_blank" href="https://zsoltfabok.com/images/posts/2012-02-07-git-blame-line-history/git-blame-gui.png"><img src="https://zsoltfabok.com/images/posts/2012-02-07-git-blame-line-history/git-blame-gui.png" title="przyklad dzialania git blame -c" style='height: 25%; width: 25%; object-fit: cover'></a> </figure>
+        
+    </li>
+    
+    
+<br>
+
 	<li>
-		<strong>git config --global color.ui true</strong> - <span></span>
+		<strong>git config --global color.ui true</strong> - <span><b>Komunikaty generowane przez komendy git'a w terminalu będą miały różne kolory. Taką samą rolę jak komenda "true", pełni komenda "auto", która jest domyślna od wersji GIT 1.8.4.</b> </span>
 	</li>
 	<li>
-		<strong>git commit "filename"</strong> - <span></span>
+		<strong>git commit "NazwaPliku"</strong> - <span><b>Tworzy commit składający się z plików podanych jako argument "NazwaPliku". Pozostałe pliki w stanie staged nie są dodane do tego commita.</b></span>
 	</li>
 	<li>
-		<strong>git branch "name"</strong> - <span></span>
+		<strong>git branch "name"</strong> - <span><b>Tworzy nową gałąź o nazwie "name" w repozytorium w , którym się aktualnie znajdujemy.</b></span>
 	</li>
 	<li>
-		<strong>git branch -v</strong> pozwala obejrzeć ostatni zatwierdzony zestaw zmian na każdej gałęzi <span></span>
+		<strong>git branch -v</strong> - <span><b>Wypisuje nazwę aktywnego brancha wraz z szczegółami ostatniego commita (początek skrótu sha1 oraz temat).</b></span>
 	</li>
 	<li>
-		<strong>git push "remote" "branch"</strong> - <span></span>
+		<strong>git push "remote" "branch"</strong> - <span><b>Wysyła zmiany z ostatniego commita w lokalnej gałęzi "branch" do zdalnego repozytorium "remote".</b></span>
 	</li>
 	<li>
-		<strong>git log "branch" --not "branch"</strong> - <span></span>
+		<strong>git log "branch1" --not "branch2"</strong> - <span>Wyświetli historię commitów "branch1" z pominięciem commitów będących częścią "branch2".</span>
 	</li>
 	<li>
-		<strong>git blame -C "filename"</strong> - <span></span>
+		<strong>git blame -C "filename"</strong> - <span>Wyszukuje fragmenty kodu przekopiowane z innych plików będących częścią tego samego commita.</span>
+        <br><figure><a target="_blank" href="https://zsoltfabok.com/images/posts/2012-02-07-git-blame-line-history/git-blame-gui.png"><img src="https://zsoltfabok.com/images/posts/2012-02-07-git-blame-line-history/git-blame-gui.png" title="przyklad dzialania git blame -c" style='height: 25%; width: 25%; object-fit: cover'></a> </figure></li>
 	</li>
 	<li>
-		<strong>git bisect (start, bad, good, reset)</strong> - <span></span>
-	</li>
+		<strong>git bisect (start, bad, good, reset)</strong> - <span>Pozwala na binarne wyszukiwanie commitu, w którym pojawiła się konkretna zmiana.
+			<ul class = "tick">
+                    <li>
+                        <div class="popup" onclick="myFunction8()">git bisect start
+                            <span class="popuptext" id="myPopup8">Rozpoczyna wyszukiwanie.</span>
+                        </div>
+                    </li>
+                    <li>
+                   <div class="popup" onclick="myFunction9()">git bisect bad "name"
+                            <span class="popuptext" id="myPopup9">Znakuje commit o nazwie "name", w którym pojawiła się zmiania.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="popup" onclick="myFunction10()">git bisect good "name"
+                            <span class="popuptext" id="myPopup10">Znakuje commit o nazwie "name", w którym nie ma szukanej zmiany.</span>
+                        </div>
+                    </li>
+                    <li>
+                         <div class="popup" onclick="myFunction11()">git bisect reset
+                            <span class="popuptext" id="myPopup11">Przywraca stan do ostatniego aktywnego commitu przed git bisect start.</span>
+                        </div>
+                    </li>
+               
+			</ul>
+			</span>
 </ul>
 </div>
+<div id="links_section">
+<h2>Przydatne linki do nauki git-a</h2>
+	<ul>
+	<li><a class="links" href="https://try.github.io/levels/1/challenges/1"> Interaktywny tutorial od podstaw</a></li>
+	<li><a class="links" href="http://learngitbranching.js.org/">Strona z zadaniami do ćwiczenia branchingu</a></li>
+	<li><a class="links" href="https://git-scm.com/docs">Dokumentacja git-a</a></li>
+	</ul>
+</div>
+
+<script>
+    function myFunction() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    }
+</script>
+
+<script>
+    function myFunction1() {
+        var popup = document.getElementById("myPopup1");
+        popup.classList.toggle("show");
+    }
+</script>
+
+
+<script>
+    function myFunction2() {
+        var popup = document.getElementById("myPopup2");
+        popup.classList.toggle("show");
+    }
+</script>
+<script>
+ 
+    function myFunction3() {
+        var popup = document.getElementById("myPopup3");
+        popup.classList.toggle("show");
+    }
+</script>
+<script>
+    function myFunction4() {
+        var popup = document.getElementById("myPopup4");
+        popup.classList.toggle("show");
+    }
+</script>
+<script>
+    function myFunction5() {
+        var popup = document.getElementById("myPopup5");
+        popup.classList.toggle("show");
+    }
+</script>
+<script>
+    function myFunction6() {
+        var popup = document.getElementById("myPopup6");
+        popup.classList.toggle("show");
+    }
+</script>
+<script>
+    function myFunction7() {
+        var popup = document.getElementById("myPopup7");
+        popup.classList.toggle("show");
+    }
+</script>
+<script>
+    function myFunction8() {
+        var popup = document.getElementById("myPopup8");
+        popup.classList.toggle("show");
+    }
+</script>
+<script>
+    function myFunction9() {
+        var popup = document.getElementById("myPopup9");
+        popup.classList.toggle("show");
+    }
+</script>
+<script>
+    function myFunction10() {
+        var popup = document.getElementById("myPopup10");
+        popup.classList.toggle("show");
+    }
+</script>
+<script>
+    function myFunction11() {
+        var popup = document.getElementById("myPopup11");
+        popup.classList.toggle("show");
+    }
+</script>
+
 </body>
 </html>
